@@ -18,8 +18,12 @@ public class Gradient implements PConstants {
 	private float higherKey;
 
 	/**
+	 * Constructor
+	 * 
+	 * Gradient myGradient=new Gradient(THIS);
 	 * 
 	 * @param myParent
+	 *            a PApplet reference, most of the this THIS
 	 */
 	public Gradient(PApplet myParent) {
 		parent = myParent;
@@ -28,6 +32,20 @@ public class Gradient implements PConstants {
 		higherKey = 0.0f;
 	}
 
+	/**
+	 * addShadeToGradient(float key, int value)
+	 * 
+	 * Attempt to add a shade to the gradient, if a shade already exists with the
+	 * same key, return false
+	 * 
+	 * myGradient.addShadeToGradient(0.3,color(126,23,59));
+	 * 
+	 * @param key
+	 *            a float between 0.0 and 1.0
+	 * @param value
+	 *            a color
+	 * @return
+	 */
 	public boolean addShadeToGradient(float key, int value) {
 		for (ColorGradient sh : shades) {
 			if (sh.key == key)
@@ -42,11 +60,30 @@ public class Gradient implements PConstants {
 		return true;
 	}
 
+	/**
+	 * clear()
+	 * 
+	 * Reset the Gradient
+	 * 
+	 * myGradient.clear();
+	 * 
+	 */
 	public void clear() {
 		shades.clear();
 
 	}
 
+	/**
+	 * getGradientShade(float val) Return an interpolate color from the gradient.
+	 * val return the interpolate color between two shade or the only shade if there
+	 * is only one
+	 * 
+	 * color aColor=myGradient.getGradientShade(0.66);
+	 * 
+	 * @param val
+	 *            a float between 0.0 and 1.0
+	 * @return an interpolate color
+	 */
 	public int getGradientShade(float val) {
 		int result = 0;
 		val = parent.constrain(val, lowerKey, higherKey);
@@ -72,10 +109,24 @@ public class Gradient implements PConstants {
 		return result;
 	}
 
+	/**
+	 * getHigherKey()
+	 * 
+	 * float aFloat = myGradient.getHigherKey();
+	 * 
+	 * @return the higher key of the gradient
+	 */
 	public float getHigherKey() {
 		return higherKey;
 	}
 
+	/**
+	 * getKeysArray()
+	 * 
+	 * float anArrayF[]=myGradient.getKeysArray();
+	 * 
+	 * @return return an array of float containing the keys value
+	 */
 	public float[] getKeysArray() {
 		float keys[] = new float[getNumberShades()];
 		for (int i = 0; i < keys.length; i++) {
@@ -84,14 +135,29 @@ public class Gradient implements PConstants {
 		return keys;
 	}
 
+	/**getLowerKey()
+	 * 
+	 * float aFloat=myGradient.getLowerKey()
+	 * 
+	 * @return the lower key of the gradient
+	 */
+
 	public float getLowerKey() {
 		return lowerKey;
 	}
-
+	/**getNumberShades()
+	 * 
+	 * @return the number of shades composing your gradient
+	 */
 	public int getNumberShades() {
 		return shades.size();
 	}
-
+	/**getValuesArray()
+	 * 
+	 * color anArrayC[]=myGradient.getValuesArray();
+	 * 
+	 * @return return an array of color containing the color of the shades
+	 */
 	public int[] getValuesArray() {
 		int[] values = new int[getNumberShades()];
 		for (int i = 0; i < values.length; i++) {
@@ -99,14 +165,25 @@ public class Gradient implements PConstants {
 		}
 		return values;
 	}
-
+/**initBW();
+ * 
+ * init a simple gradient of two colors, black and white
+ * 
+ * myGradient.initBW();
+ * 
+ */
+	
 	public void initBW() {
 		shades.clear();
 		addShadeToGradient(0.0f, parent.color(0));
 		addShadeToGradient(1.0f, parent.color(255));
 
 	}
-
+/*initHSB()
+ * 
+ * init a HSB gradient
+ * 
+ */
 	public void initHSB() {
 		parent.pushStyle();
 		parent.colorMode(parent.HSB, 100);
@@ -117,7 +194,17 @@ public class Gradient implements PConstants {
 		}
 		parent.popStyle();
 	}
-
+/**
+ * isLower(ColorGradient cg0, ColorGradient cg1)
+ * 
+ * private function, simply compare cg0 and cg1 keys, two ColorGradient.
+ * if cg0's key is lower than cg1's key, return true 
+ * 
+ * 
+ * @param cg0
+ * @param cg1
+ * @return cg0.key<cg1.key
+ */
 	private boolean isLower(ColorGradient cg0, ColorGradient cg1) {
 		boolean result = false;
 		if (cg0.key < cg1.key)
@@ -125,9 +212,30 @@ public class Gradient implements PConstants {
 		return result;
 	}
 
-	/**
-	 * Set the lower key value Compare nLowerKey to lowerKey and replace this one by
-	 * nLowerKey if it is smaller than lowerkey
+	
+	/**setHigherKey(float nHigherKey)
+	 * 
+	 * Private function
+	 * 
+	 * Set the higher key value compare nHigherKey to higherKey 
+	 * and replace this one by nHigherKey 
+	 * if it is higher than lowerkey
+	 * 
+	 * @param nLowerKey
+	 * @return lowerKey
+	 */
+	private float setHigherKey(float nHigherKey) {
+		if (nHigherKey > higherKey)
+			higherKey = nHigherKey;
+		return higherKey;
+	}
+	/**setLowerKey(float nLowerKey)
+	 * 
+	 * Private function
+	 * 
+	 * Compare nLowerKey to lowerKey 
+	 * and replace this one by nLowerKey 
+	 * if it is smaller than lowerkey
 	 * 
 	 * @param nLowerKey
 	 * @return lowerKey
@@ -138,13 +246,14 @@ public class Gradient implements PConstants {
 			lowerKey = nLowerKey;
 		return lowerKey;
 	}
-
-	private float setHigherKey(float nHigherKey) {
-		if (nHigherKey > higherKey)
-			higherKey = nHigherKey;
-		return higherKey;
-	}
-
+	/**sortShades()
+	 * 
+	 * Private function
+	 * 
+	 * simply sort shades, use isLower()
+	 * 
+	 */
+	
 	private void sortShades() {
 		for (int i = shades.size() - 2; i >= 0; i--) {
 			if (!isLower(shades.get(i), shades.get(i + 1))) {
