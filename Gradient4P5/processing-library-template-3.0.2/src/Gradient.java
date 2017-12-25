@@ -3,7 +3,7 @@ package gradient4p5.gradient;
 import java.util.ArrayList;
 
 import processing.core.*;
-import gillesutility.gradient.colorgradient.*;
+
 
 public class Gradient implements PConstants	 {
 	public ArrayList<ColorGradient> shades;
