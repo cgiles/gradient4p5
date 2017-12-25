@@ -31,7 +31,7 @@ public class Gradient implements PConstants	 {
 		return max;
 	}
 
-	public float getMin() {
+	public float getMin() { 
 		return min;
 	}
 

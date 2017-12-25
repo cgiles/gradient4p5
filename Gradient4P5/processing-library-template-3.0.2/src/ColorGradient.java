@@ -9,6 +9,6 @@ public class ColorGradient {
 	public ColorGradient(float key, int value) {
 		this.key = key;
 		this.value = value;
-	}
+	} 
 
 }
