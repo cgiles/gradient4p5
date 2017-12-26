@@ -211,8 +211,8 @@ public class Gradient implements PConstants {
 	 * cg0's key is lower than cg1's key, return true
 	 * 
 	 * 
-	 * @param cg0
-	 * @param cg1
+	 * @param cg0 ColorGradient
+	 * @param cg1 ColorGradient
 	 * @return cg0.key<cg1.key
 	 */
 	private boolean isLower(ColorGradient cg0, ColorGradient cg1) {
@@ -220,6 +220,19 @@ public class Gradient implements PConstants {
 		if (cg0.key < cg1.key)
 			result = true;
 		return result;
+	}
+	/**
+	 * Remove a shade of the gradient, index must be between 0 and the number of shades minus 1
+	 * 
+	 * myGradient.removeByIndex(5);
+	 * 
+	 * @param index the index of the shade to remove of the gradient
+	 */
+	
+	public void removeByIndex(int index) {
+		if(index<getNumberShades()) {
+			shades.remove(i);
+		}
 	}
 
 	/**
