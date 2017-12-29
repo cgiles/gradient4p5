@@ -1,5 +1,5 @@
-
 package gradient4p5.gradient;
+
 
 import java.util.ArrayList;
 import gradient4p5.gradient.colorgradient.*;

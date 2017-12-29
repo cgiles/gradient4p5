@@ -1,8 +1,8 @@
-## How to install ##library.name##
+## How to install Gradient4P5
 
 ### Install with the Contribution Manager
 
-Add contributed Libraries by selecting the menu item _Sketch_ → _Import Library..._ → _Add Library..._ This will open the Contribution Manager, where you can browse for ##library.name##, or any other Library you want to install.
+Add contributed Libraries by selecting the menu item _Sketch_ → _Import Library..._ → _Add Library..._ This will open the Contribution Manager, where you can browse for Gradient4P5, or any other Library you want to install.
 
 Not all available Libraries have been converted to show up in this menu. If a Library isn't there, it will need to be installed manually by following the instructions below.
 
@@ -14,25 +14,25 @@ By default the following locations are used for your sketchbook folder:
   * For Mac users, the sketchbook folder is located inside `~/Documents/Processing` 
   * For Windows users, the sketchbook folder is located inside `My Documents/Processing`
 
-Download ##library.name## from ##library.url##
+Download Gradient4P5 from https://cgiles.github.io/gradient4p5
 
 Unzip and copy the contributed Library's folder into the `libraries` folder in the Processing sketchbook. You will need to create this `libraries` folder if it does not exist.
 
-The folder structure for Library ##library.name## should be as follows:
+The folder structure for Library Gradient4P5 should be as follows:
 
 ```
 Processing
   libraries
-    ##library.name##
+    Gradient4P5
       examples
       library
-        ##library.name##.jar
+        Gradient4P5.jar
       reference
       src
 ```
              
-Some folders like `examples` or `src` might be missing. After Library ##library.name## has been successfully installed, restart the Processing application.
+Some folders like `examples` or `src` might be missing. After Library Gradient4P5 has been successfully installed, restart the Processing application.
 
 ### Troubleshooting
 
-If you're having trouble, have a look at the [Processing Wiki](https://github.com/processing/processing/wiki/How-to-Install-a-Contributed-Library) for more information, or contact the author [##author.name##] (##author.url##).
+If you're having trouble, have a look at the [Processing Wiki](https://github.com/processing/processing/wiki/How-to-Install-a-Contributed-Library) for more information, or contact the author [Gilles Chefsailles] (https://cgiles.github.io/).
